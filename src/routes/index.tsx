@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import { Certificate } from "@/components/Certificate";
 import { LANGS, type LangCode } from "@/lib/translations";
@@ -28,8 +28,12 @@ function today() {
 function Index() {
   const [studentName, setStudentName] = useState("");
   const [courseName, setCourseName] = useState("");
-  const [date, setDate] = useState(today());
-  const [certId, setCertId] = useState(genId());
+  const [date, setDate] = useState("");
+  const [certId, setCertId] = useState("");
+  useEffect(() => {
+    setDate(today());
+    setCertId(genId());
+  }, []);
   const [photo, setPhoto] = useState<string | null>(null);
   const [lang, setLang] = useState<LangCode>("en");
   const [theme, setTheme] = useState<"dark" | "light">("dark");
