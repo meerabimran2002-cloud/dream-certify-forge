@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import logo from "@/assets/academy-logo.jpeg";
-import signature from "@/assets/owner-signature.jpeg";
+import signature from "@/assets/owner-signature-clean.png";
 import { translations, type LangCode, LANGS } from "@/lib/translations";
 
 export type CertificateData = {
@@ -144,14 +144,16 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
             </div>
 
             <div style={{ textAlign: "center", flex: 1 }}>
-              <div style={{ height: 50, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+              <div style={{ height: 92, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
                 <img
                   src={signature}
                   alt="signature"
                   style={{
-                    height: 80,
+                    width: 260,
+                    height: 92,
                     objectFit: "contain",
-                    mixBlendMode: isDark ? "screen" : "multiply",
+                    objectPosition: "center bottom",
+                    filter: isDark ? "drop-shadow(0 0 8px rgba(255,255,255,0.18))" : "none",
                   }}
                 />
 
