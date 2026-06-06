@@ -159,7 +159,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
                 />
               </div>
               <div style={{ width: 180, height: 1, background: border, margin: "0 auto" }} />
-              <div style={{ fontSize: 14, fontWeight: 600, color: fg, marginTop: 8 }}>Founder</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: fg, marginTop: 8 }}>Meerab Imran</div>
               <div style={{ fontSize: 11, color: muted, letterSpacing: 1, textTransform: "uppercase" }}>{t.founder}</div>
             </div>
           </div>
