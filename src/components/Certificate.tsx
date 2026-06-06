@@ -149,14 +149,12 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
                   src={signature}
                   alt="signature"
                   style={{
-                    height: 70,
+                    height: 80,
                     objectFit: "contain",
-                    filter: isDark
-                      ? "invert(1) brightness(1.4) contrast(2) hue-rotate(180deg)"
-                      : "brightness(0.4) contrast(2.2)",
                     mixBlendMode: isDark ? "screen" : "multiply",
                   }}
                 />
+
               </div>
               <div style={{ width: 180, height: 1, background: border, margin: "0 auto" }} />
               <div style={{ fontSize: 14, fontWeight: 600, color: fg, marginTop: 8 }}>Meerab Imran</div>
