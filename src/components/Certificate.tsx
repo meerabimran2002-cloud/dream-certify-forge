@@ -21,8 +21,8 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
     const isDark = theme === "dark";
 
     const bg = isDark
-      ? `radial-gradient(circle at 20% 10%, ${accent}25, transparent 55%), radial-gradient(circle at 80% 90%, ${accent}20, transparent 55%), linear-gradient(135deg, #0a0f1e 0%, #0d1429 50%, #050912 100%)`
-      : `radial-gradient(circle at 20% 10%, ${accent}18, transparent 55%), radial-gradient(circle at 80% 90%, ${accent}15, transparent 55%), linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #eef2f7 100%)`;
+      ? `linear-gradient(135deg, #0b1120 0%, #111827 50%, #0b1120 100%)`
+      : `linear-gradient(135deg, #fbfbfd 0%, #ffffff 50%, #f3f4f6 100%)`;
 
     const fg = isDark ? "#f1f5f9" : "#0f172a";
     const muted = isDark ? "#94a3b8" : "#475569";
@@ -77,7 +77,6 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
             border: `1px solid ${border}`,
             borderRadius: 24,
             background: cardBg,
-            backdropFilter: "blur(10px)",
           }}
         />
 
@@ -85,7 +84,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
           {/* Header */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-              <img src={logo} alt="Dream Team Academy" style={{ width: 96, height: 96, borderRadius: 16, objectFit: "cover", boxShadow: `0 8px 30px ${accent}40` }} />
+              <img src={logo} alt="Dream Team Academy" style={{ width: 96, height: 96, borderRadius: 16, objectFit: "cover", border: `1px solid ${border}` }} />
               <div>
                 <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: 1, color: fg }}>{t.academyName}</div>
                 <div style={{ fontSize: 13, letterSpacing: 4, color: accent, textTransform: "uppercase", marginTop: 4 }}>{t.tagline}</div>
@@ -99,7 +98,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
 
           {/* Title */}
           <div style={{ textAlign: "center", marginTop: 30 }}>
-            <div style={{ fontSize: 72, fontWeight: 900, letterSpacing: 8, lineHeight: 1, background: `linear-gradient(135deg, ${fg}, ${accent})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", textTransform: "uppercase" }}>
+            <div style={{ fontSize: 68, fontWeight: 800, letterSpacing: 6, lineHeight: 1, color: fg, textTransform: "uppercase" }}>
               {t.certificate}
             </div>
             <div style={{ fontSize: 22, letterSpacing: 12, color: muted, marginTop: 8, textTransform: "uppercase", fontWeight: 300 }}>
@@ -113,7 +112,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
             <div style={{ fontSize: 18, color: muted, fontWeight: 300 }}>{t.presentedTo}</div>
 
             {photo && (
-              <img src={photo} alt={studentName} style={{ width: 110, height: 110, borderRadius: "50%", objectFit: "cover", border: `3px solid ${accent}`, boxShadow: `0 6px 24px ${accent}50` }} />
+              <img src={photo} alt={studentName} style={{ width: 110, height: 110, borderRadius: "50%", objectFit: "cover", border: `3px solid ${accent}` }} />
             )}
 
             <div style={{ fontFamily: "'Playfair Display', 'Georgia', serif", fontSize: 64, fontWeight: 700, lineHeight: 1.1, color: fg, padding: "0 40px" }}>
@@ -153,7 +152,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
                     height: 92,
                     objectFit: "contain",
                     objectPosition: "center bottom",
-                    filter: isDark ? "drop-shadow(0 0 8px rgba(255,255,255,0.18))" : "none",
+                    filter: "none",
                   }}
                 />
 
