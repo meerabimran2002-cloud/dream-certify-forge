@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import html2canvas from "html2canvas";
+import { toPng } from "html-to-image";
 import { Certificate } from "@/components/Certificate";
 import { LANGS, type LangCode } from "@/lib/translations";
 import logo from "@/assets/academy-logo.jpeg";
@@ -53,12 +53,22 @@ function Index() {
     if (!certRef.current) return;
     setDownloading(true);
     try {
-      const canvas = await html2canvas(certRef.current, { scale: 2, backgroundColor: null, useCORS: true });
-      const url = canvas.toDataURL("image/png");
+      const url = await toPng(certRef.current, {
+        pixelRatio: 2,
+        cacheBust: true,
+        width: 1400,
+        height: 990,
+        style: { transform: "none", margin: "0" },
+      });
       const a = document.createElement("a");
       a.href = url;
       a.download = `${(studentName || "certificate").replace(/\s+/g, "_")}_${certId}.png`;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error("Download failed", err);
+      alert("Download failed. Please try again.");
     } finally {
       setDownloading(false);
     }
