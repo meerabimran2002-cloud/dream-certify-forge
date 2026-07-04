@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import logo from "@/assets/academy-logo.jpeg";
+import logo from "@/assets/academy-logo.png";
 import signature from "@/assets/owner-signature-clean.png";
 import { translations, type LangCode, LANGS } from "@/lib/translations";
 

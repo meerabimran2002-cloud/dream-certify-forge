@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { Certificate } from "@/components/Certificate";
 import { LANGS, type LangCode } from "@/lib/translations";
-import logo from "@/assets/academy-logo.jpeg";
+import logo from "@/assets/academy-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
