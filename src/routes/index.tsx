@@ -36,7 +36,7 @@ function Index() {
   }, []);
   const [photo, setPhoto] = useState<string | null>(null);
   const [lang, setLang] = useState<LangCode>("en");
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [accent, setAccent] = useState("#3b82f6");
   const [downloading, setDownloading] = useState(false);
   const certRef = useRef<HTMLDivElement>(null);
