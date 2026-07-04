@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import logo from "@/assets/academy-logo.png";
+import logo from "@/assets/academy-logo-mark.png";
 import signature from "@/assets/owner-signature-clean.png";
 import { translations, type LangCode, LANGS } from "@/lib/translations";
 
@@ -111,8 +111,8 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
           <div style={{ display: "grid", gridTemplateColumns: "180px 1fr 180px", alignItems: "center", gap: 24 }}>
             <img
               src={logo}
-              alt="Dream Team Academy"
-              style={{ width: 170, height: 170, objectFit: "contain", justifySelf: "start" }}
+              alt="Dream Team Academy logo"
+              style={{ width: 180, height: 150, objectFit: "contain", justifySelf: "start" }}
             />
             <div style={{ textAlign: "center" }}>
               <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: 8, color: navy }}>DREAM TEAM ACADEMY</div>
@@ -222,8 +222,8 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
                 />
               </div>
               <div style={{ height: 1, background: fg, margin: "4px auto 6px", width: 260 }} />
-              <div style={{ fontSize: 16, fontWeight: 700, color: fg }}>Meerab Imran</div>
-              <div style={{ fontSize: 12, letterSpacing: 3, color: muted, marginTop: 2 }}>FOUNDER</div>
+              <div style={{ fontSize: 26, fontWeight: 800, color: navy, lineHeight: 1.1 }}>Meerab Imran</div>
+              <div style={{ fontSize: 14, letterSpacing: 4, color: muted, marginTop: 4, fontWeight: 700 }}>FOUNDER</div>
             </div>
             <div style={{ textAlign: "center" }}>
               <div style={{ height: 70, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
