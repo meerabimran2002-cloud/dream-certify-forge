@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { toPng } from "html-to-image";
 import { Certificate } from "@/components/Certificate";
 import { LANGS, type LangCode } from "@/lib/translations";
-import logo from "@/assets/academy-logo.png";
+import logo from "@/assets/academy-logo-mark.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -94,7 +94,7 @@ function Index() {
       <header className="border-b border-white/5 backdrop-blur-xl sticky top-0 z-10" style={{ background: theme === "dark" ? "rgba(2,6,23,0.6)" : "rgba(255,255,255,0.7)" }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Dream Team Academy" className="w-11 h-11 rounded-xl shadow-lg" />
+            <img src={logo} alt="Dream Team Academy logo" className="w-12 h-10 object-contain" />
             <div>
               <div className="font-bold text-lg leading-tight">Dream Team Academy</div>
               <div className={`text-xs tracking-widest ${subText}`}>CERTIFICATE DESIGNER</div>
