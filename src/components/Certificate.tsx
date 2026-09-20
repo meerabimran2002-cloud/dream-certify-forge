@@ -196,8 +196,8 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
             </p>
           </div>
 
-          {/* Footer signatures */}
-          <div style={{ marginTop: "auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, padding: "0 40px" }}>
+          {/* Footer signature — centered */}
+          <div style={{ marginTop: "auto", display: "flex", justifyContent: "center", padding: "0 40px" }}>
             <div style={{ textAlign: "center" }}>
               <div style={{ height: 70, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
                 <img
@@ -208,24 +208,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
               </div>
               <div style={{ height: 1, background: fg, margin: "4px auto 6px", width: 260 }} />
               <div style={{ fontSize: 26, fontWeight: 800, color: navy, lineHeight: 1.1 }}>Meerab Imran</div>
-              <div style={{ fontSize: 14, letterSpacing: 4, color: muted, marginTop: 4, fontWeight: 700 }}>FOUNDER</div>
-            </div>
-            <div style={{ textAlign: "center" }}>
-              <div style={{ height: 70, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-                <div
-                  style={{
-                    fontFamily: "'Great Vibes', cursive",
-                    fontSize: 46,
-                    color: navy,
-                    lineHeight: 1,
-                  }}
-                >
-                  Dream Team
-                </div>
-              </div>
-              <div style={{ height: 1, background: fg, margin: "4px auto 6px", width: 260 }} />
-              <div style={{ fontSize: 16, fontWeight: 700, color: fg }}>Academy Director</div>
-              <div style={{ fontSize: 12, letterSpacing: 3, color: muted, marginTop: 2 }}>DREAM TEAM ACADEMY</div>
+              <div style={{ fontSize: 14, letterSpacing: 4, color: muted, marginTop: 4, fontWeight: 700 }}>FOUNDER &amp; CEO</div>
             </div>
           </div>
         </div>
