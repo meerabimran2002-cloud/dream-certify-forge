@@ -34,7 +34,6 @@ function Index() {
     setDate(today());
     setCertId(genId());
   }, []);
-  const [photo, setPhoto] = useState<string | null>(null);
   const [lang, setLang] = useState<LangCode>("en");
   const [theme, setTheme] = useState<"dark" | "light">("light");
   const [accent, setAccent] = useState("#3b82f6");
