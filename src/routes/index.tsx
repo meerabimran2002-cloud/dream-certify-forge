@@ -40,13 +40,6 @@ function Index() {
   const [downloading, setDownloading] = useState(false);
   const certRef = useRef<HTMLDivElement>(null);
 
-  const onPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0];
-    if (!f) return;
-    const r = new FileReader();
-    r.onload = () => setPhoto(r.result as string);
-    r.readAsDataURL(f);
-  };
 
   const download = async () => {
     if (!certRef.current) return;
