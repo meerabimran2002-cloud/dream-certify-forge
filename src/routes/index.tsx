@@ -135,18 +135,6 @@ function Index() {
             </div>
 
             <div>
-              <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Student Photo (optional)</label>
-              <div className="flex items-center gap-3">
-                {photo && <img src={photo} alt="" className="w-12 h-12 rounded-full object-cover border-2" style={{ borderColor: accent }} />}
-                <label className={`flex-1 cursor-pointer px-4 py-2.5 rounded-lg border text-sm text-center transition ${theme === "dark" ? "border-slate-700 hover:bg-slate-800" : "border-slate-300 hover:bg-slate-100"}`}>
-                  {photo ? "Change photo" : "Upload photo"}
-                  <input type="file" accept="image/*" className="hidden" onChange={onPhoto} />
-                </label>
-                {photo && <button onClick={() => setPhoto(null)} className="text-xs text-red-400 hover:underline">Remove</button>}
-              </div>
-            </div>
-
-            <div>
               <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Language</label>
               <select className={inputCls} value={lang} onChange={(e) => setLang(e.target.value as LangCode)}>
                 {LANGS.map((l) => (
@@ -196,7 +184,6 @@ function Index() {
                   courseName={courseName || "Course Name"}
                   date={date}
                   certId={certId}
-                  photo={photo}
                   lang={lang}
                   theme={theme}
                   accent={accent}
