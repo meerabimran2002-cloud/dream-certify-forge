@@ -8,14 +8,13 @@ export type CertificateData = {
   courseName: string;
   date: string;
   certId: string;
-  photo?: string | null;
   lang: LangCode;
   theme: "dark" | "light";
   accent: string;
 };
 
 export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
-  ({ studentName, courseName, date, certId, photo, lang, theme, accent }, ref) => {
+  ({ studentName, courseName, date, certId, lang, theme, accent }, ref) => {
     const t = translations[lang];
     const isRTL = LANGS.find((l) => l.code === lang)?.rtl;
     const isDark = theme === "dark";
@@ -168,20 +167,6 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
 
           {/* Student name */}
           <div style={{ textAlign: "center", marginTop: 18 }}>
-            {photo && (
-              <img
-                src={photo}
-                alt={studentName}
-                style={{
-                  width: 100,
-                  height: 100,
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  border: `3px solid ${teal}`,
-                  marginBottom: 8,
-                }}
-              />
-            )}
             <div
               style={{
                 fontFamily: "'Great Vibes', 'Dancing Script', cursive",
