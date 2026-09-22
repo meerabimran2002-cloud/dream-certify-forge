@@ -3,6 +3,8 @@ import logo from "@/assets/academy-logo-mark.png";
 import signature from "@/assets/owner-signature-clean.png";
 import { translations, type LangCode, LANGS } from "@/lib/translations";
 
+export type CertificateKind = "completion" | "achievement";
+
 export type CertificateData = {
   studentName: string;
   courseName: string;
@@ -11,10 +13,14 @@ export type CertificateData = {
   lang: LangCode;
   theme: "dark" | "light";
   accent: string;
+  kind?: CertificateKind;
+  position?: string;
+  eventName?: string;
 };
 
 export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
-  ({ studentName, courseName, date, certId, lang, theme, accent }, ref) => {
+  ({ studentName, courseName, date, certId, lang, theme, accent, kind = "completion", position = "1st", eventName = "" }, ref) => {
+    const isAchievement = kind === "achievement";
     const t = translations[lang];
     const isRTL = LANGS.find((l) => l.code === lang)?.rtl;
     const isDark = theme === "dark";
