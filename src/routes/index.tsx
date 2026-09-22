@@ -26,6 +26,9 @@ function today() {
 }
 
 function Index() {
+  const [kind, setKind] = useState<"completion" | "achievement">("completion");
+  const [position, setPosition] = useState("1st");
+  const [eventName, setEventName] = useState("");
   const [studentName, setStudentName] = useState("");
   const [courseName, setCourseName] = useState("");
   const [date, setDate] = useState("");
