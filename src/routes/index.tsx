@@ -203,7 +203,7 @@ function Index() {
 
             <button
               onClick={download}
-              disabled={downloading || !studentName || !courseName}
+              disabled={downloading || !studentName || (kind === "achievement" ? !eventName : !courseName)}
               className="w-full mt-3 py-3 rounded-lg font-semibold text-white transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               style={{ background: `linear-gradient(135deg, ${accent}, ${accent}cc)`, boxShadow: `0 8px 24px ${accent}60` }}
             >
@@ -223,6 +223,9 @@ function Index() {
               <div style={{ transform: "scale(0.62)", transformOrigin: "top left", width: 1400, height: 990 * 0.62 + 2 }}>
                 <Certificate
                   ref={certRef}
+                  kind={kind}
+                  position={position}
+                  eventName={eventName}
                   studentName={studentName || "Student Name"}
                   courseName={courseName || "Course Name"}
                   date={date}
