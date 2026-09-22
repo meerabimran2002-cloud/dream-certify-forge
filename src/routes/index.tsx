@@ -26,6 +26,9 @@ function today() {
 }
 
 function Index() {
+  const [kind, setKind] = useState<"completion" | "achievement">("completion");
+  const [position, setPosition] = useState("1st");
+  const [eventName, setEventName] = useState("");
   const [studentName, setStudentName] = useState("");
   const [courseName, setCourseName] = useState("");
   const [date, setDate] = useState("");
@@ -111,14 +114,54 @@ function Index() {
 
           <div className="space-y-4">
             <div>
+              <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Certificate Type</label>
+              <div className="grid grid-cols-2 gap-2">
+                {([["completion", "Course Completion"], ["achievement", "Position / Achievement"]] as const).map(([k, label]) => (
+                  <button
+                    key={k}
+                    onClick={() => setKind(k)}
+                    className={`px-3 py-2 rounded-lg text-sm border transition ${
+                      kind === k
+                        ? "text-white border-transparent"
+                        : theme === "dark"
+                          ? "border-slate-700 hover:bg-slate-800"
+                          : "border-slate-300 hover:bg-slate-100"
+                    }`}
+                    style={kind === k ? { background: accent } : undefined}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
               <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Student Name *</label>
               <input className={inputCls} value={studentName} onChange={(e) => setStudentName(e.target.value)} placeholder="e.g. Ahmed Khan" />
             </div>
 
-            <div>
-              <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Course Name *</label>
-              <input className={inputCls} value={courseName} onChange={(e) => setCourseName(e.target.value)} placeholder="e.g. Full Stack Web Development" />
-            </div>
+            {kind === "achievement" ? (
+              <>
+                <div>
+                  <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Competition / Event *</label>
+                  <input className={inputCls} value={eventName} onChange={(e) => setEventName(e.target.value)} placeholder="e.g. Annual Coding Competition 2026" />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Position</label>
+                  <select className={inputCls} value={position} onChange={(e) => setPosition(e.target.value)}>
+                    {["1st", "2nd", "3rd", "4th", "5th"].map((p) => (
+                      <option key={p} value={p}>{p} Position</option>
+                    ))}
+                  </select>
+                </div>
+              </>
+            ) : (
+              <div>
+                <label className="text-xs font-semibold tracking-wider uppercase block mb-1.5">Course Name *</label>
+                <input className={inputCls} value={courseName} onChange={(e) => setCourseName(e.target.value)} placeholder="e.g. Full Stack Web Development" />
+              </div>
+            )}
+
 
             <div className="grid grid-cols-2 gap-3">
               <div>
@@ -160,7 +203,7 @@ function Index() {
 
             <button
               onClick={download}
-              disabled={downloading || !studentName || !courseName}
+              disabled={downloading || !studentName || (kind === "achievement" ? !eventName : !courseName)}
               className="w-full mt-3 py-3 rounded-lg font-semibold text-white transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               style={{ background: `linear-gradient(135deg, ${accent}, ${accent}cc)`, boxShadow: `0 8px 24px ${accent}60` }}
             >
@@ -180,6 +223,9 @@ function Index() {
               <div style={{ transform: "scale(0.62)", transformOrigin: "top left", width: 1400, height: 990 * 0.62 + 2 }}>
                 <Certificate
                   ref={certRef}
+                  kind={kind}
+                  position={position}
+                  eventName={eventName}
                   studentName={studentName || "Student Name"}
                   courseName={courseName || "Course Name"}
                   date={date}

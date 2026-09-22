@@ -3,6 +3,8 @@ import logo from "@/assets/academy-logo-mark.png";
 import signature from "@/assets/owner-signature-clean.png";
 import { translations, type LangCode, LANGS } from "@/lib/translations";
 
+export type CertificateKind = "completion" | "achievement";
+
 export type CertificateData = {
   studentName: string;
   courseName: string;
@@ -11,10 +13,14 @@ export type CertificateData = {
   lang: LangCode;
   theme: "dark" | "light";
   accent: string;
+  kind?: CertificateKind;
+  position?: string;
+  eventName?: string;
 };
 
 export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
-  ({ studentName, courseName, date, certId, lang, theme, accent }, ref) => {
+  ({ studentName, courseName, date, certId, lang, theme, accent, kind = "completion", position = "1st", eventName = "" }, ref) => {
+    const isAchievement = kind === "achievement";
     const t = translations[lang];
     const isRTL = LANGS.find((l) => l.code === lang)?.rtl;
     const isDark = theme === "dark";
@@ -129,10 +135,10 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
                 {t.certificate.toUpperCase()}
               </div>
               <div style={{ fontSize: 22, letterSpacing: 14, color: muted, marginTop: 8, fontWeight: 400 }}>
-                {t.ofCompletion.toUpperCase()}
+                {(isAchievement ? "of Achievement" : t.ofCompletion).toUpperCase()}
               </div>
               <div style={{ fontSize: 14, letterSpacing: 4, color: gold, marginTop: 14, fontWeight: 700 }}>
-                THIS CERTIFICATE IS PROUDLY PRESENTED TO
+                {isAchievement ? `AWARDED FOR SECURING ${position.toUpperCase()} POSITION` : "THIS CERTIFICATE IS PROUDLY PRESENTED TO"}
               </div>
             </div>
             {/* Gold medal seal */}
@@ -159,7 +165,9 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
                   <circle r="55" fill="url(#goldGrad)" />
                   <circle r="42" fill="none" stroke="#7a5a10" strokeWidth="1.5" />
                   <circle r="30" fill="#c9a24a" />
-                  <text textAnchor="middle" y="6" fontSize="14" fontWeight="800" fill="#3a2a08" letterSpacing="1">DTA</text>
+                  <text textAnchor="middle" y="6" fontSize={isAchievement ? 18 : 14} fontWeight="800" fill="#3a2a08" letterSpacing="1">
+                    {isAchievement ? position.toUpperCase() : "DTA"}
+                  </text>
                 </g>
               </svg>
             </div>
@@ -183,13 +191,23 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
 
           {/* Description */}
           <div style={{ textAlign: "center", marginTop: 22, padding: "0 60px" }}>
-            <p style={{ fontSize: 20, lineHeight: 1.6, color: fg, fontWeight: 400, margin: 0 }}>
-              This certificate is proudly presented to{" "}
-              <strong style={{ color: navy }}>{studentName || "the recipient"}</strong> in recognition of their
-              outstanding dedication and successful completion of the course{" "}
-              <em style={{ color: teal, fontWeight: 700 }}>&ldquo;{courseName || "Course Title"}&rdquo;</em>{" "}
-              at Dream Team Academy.
-            </p>
+            {isAchievement ? (
+              <p style={{ fontSize: 20, lineHeight: 1.6, color: fg, fontWeight: 400, margin: 0 }}>
+                This certificate is proudly awarded to{" "}
+                <strong style={{ color: navy }}>{studentName || "the recipient"}</strong> for securing{" "}
+                <em style={{ color: teal, fontWeight: 700 }}>{position} Position</em> in{" "}
+                <em style={{ color: teal, fontWeight: 700 }}>&ldquo;{eventName || courseName || "the competition"}&rdquo;</em>{" "}
+                — a remarkable display of talent, discipline and excellence at Dream Team Academy.
+              </p>
+            ) : (
+              <p style={{ fontSize: 20, lineHeight: 1.6, color: fg, fontWeight: 400, margin: 0 }}>
+                This certificate is proudly presented to{" "}
+                <strong style={{ color: navy }}>{studentName || "the recipient"}</strong> in recognition of their
+                outstanding dedication and successful completion of the course{" "}
+                <em style={{ color: teal, fontWeight: 700 }}>&ldquo;{courseName || "Course Title"}&rdquo;</em>{" "}
+                at Dream Team Academy.
+              </p>
+            )}
             <p style={{ fontSize: 16, color: muted, marginTop: 10 }}>
               Awarded on <strong style={{ color: fg }}>{date}</strong> · Certificate ID:{" "}
               <span style={{ fontFamily: "'JetBrains Mono', monospace", color: fg }}>{certId}</span>
