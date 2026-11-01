@@ -215,6 +215,9 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
             </p>
           </div>
 
+          </div>
+          </div>
+
           {/* Footer signature — centered */}
           <div style={{ marginTop: "auto", display: "flex", justifyContent: "center", padding: "0 40px" }}>
             <div style={{ textAlign: "center" }}>
