@@ -214,8 +214,6 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
               <span style={{ fontFamily: "'JetBrains Mono', monospace", color: fg }}>{certId}</span>
             </p>
           </div>
-
-          </div>
           </div>
 
           {/* Footer signature — centered */}
