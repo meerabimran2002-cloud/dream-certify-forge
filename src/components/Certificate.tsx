@@ -173,8 +173,9 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
             </div>
           </div>
 
-          {/* Student name */}
-          <div style={{ textAlign: "center", marginTop: 18 }}>
+          {/* Student name + description — vertically centered between header and signature */}
+          <div style={{ margin: "auto 0", display: "flex", flexDirection: "column" }}>
+          <div style={{ textAlign: "center" }}>
             <div
               style={{
                 fontFamily: "'Great Vibes', 'Dancing Script', cursive",
@@ -190,7 +191,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
           </div>
 
           {/* Description */}
-          <div style={{ textAlign: "center", marginTop: 22, padding: "0 60px" }}>
+          <div style={{ textAlign: "center", marginTop: 26, padding: "0 60px" }}>
             {isAchievement ? (
               <p style={{ fontSize: 20, lineHeight: 1.6, color: fg, fontWeight: 400, margin: 0 }}>
                 This certificate is proudly awarded to{" "}
@@ -212,6 +213,7 @@ export const Certificate = forwardRef<HTMLDivElement, CertificateData>(
               Awarded on <strong style={{ color: fg }}>{date}</strong> · Certificate ID:{" "}
               <span style={{ fontFamily: "'JetBrains Mono', monospace", color: fg }}>{certId}</span>
             </p>
+          </div>
           </div>
 
           {/* Footer signature — centered */}
